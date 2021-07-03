@@ -62,4 +62,12 @@ class UserController extends Controller
         $response['message'] = 'Login Successfully';
         return response()->json($response);
     }
+    public function me(Request $request)
+    {
+        $token = $request->header('x-auth-token');
+        $user = JWTAuth::toUser($token);
+        $response['user'] = $user;
+        return response()->json($response);
+    }
+
 }

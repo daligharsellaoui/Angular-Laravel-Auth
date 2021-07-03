@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { AuthService } from '../services/auth.service';
+import { AuthService } from '../../services/auth.service';
 import { ToastrService } from 'ngx-toastr';
 
 import { Router } from '@angular/router'
@@ -35,6 +35,7 @@ export class LoginComponent implements OnInit {
   get f() {
     return this.form.controls;
   }
+
   submit() {
     this.submitted = false;
     if (this.form.invalid) {

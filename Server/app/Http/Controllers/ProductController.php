@@ -3,14 +3,16 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use App\Models\Product;
+use App\Models\Category;
 
 
 class ProductController extends Controller
 {
             //Product List
             public function getProducts() {
-                return response()->json(Product::all(), 200);
+                return response()->json(DB::table('products')->paginate(10), 200);
             }
             //Product List
             //TODO
@@ -19,7 +21,7 @@ class ProductController extends Controller
                 if(is_null($category)) {
                     return response()->json(['message' => 'Category Not Found'], 404);
                 }
-                return response()->json(Product::all(), 200);
+                return response()->json(Product::where('cat_id',$id)->get(), 200);
             }
             //Product Details
             public function getProductById($id) {
@@ -40,14 +42,19 @@ class ProductController extends Controller
                     $response['code'] =409;
                 }
                 else {
-
+                $cat = $request -> cat_id;
                     //create product
+                $category = Category::find($cat);
+                    if(is_null($category)) {
+                        return response()->json(['message' => 'Category Not Found'], 404);
+                }
                     $product = Product::create ([
                         'name' => $request->name,
                         'image' => $request->image,
                         'price' => $request -> price,
                         'cat_id' => $request -> cat_id,
                     ]);
+
                     $response['status'] = 1;
                     $response['message'] = 'Product created Successfully';
                     $response['data'] = $product;

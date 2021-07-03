@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { mustMatch } from '../custom.Validators';
-import { AuthService } from '../services/auth.service';
+import { mustMatch } from '../../custom.Validators';
+import { AuthService } from '../../services/auth.service';
 import { ToastrService } from 'ngx-toastr';
 
 @Component({
