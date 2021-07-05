@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { mustMatch } from '../../../custom.Validators';
 import { AuthService } from '../../../services/Auth/auth.service';
 import { ToastrService } from 'ngx-toastr';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-register',
@@ -16,7 +17,8 @@ export class RegisterComponent implements OnInit {
 
   constructor(private formBuilder: FormBuilder,
     private authService: AuthService,
-    private toastr: ToastrService) { }
+    private toastr: ToastrService,
+    private router: Router) { }
 
   createForm() {
     this.form = this.formBuilder.group({
@@ -30,6 +32,9 @@ export class RegisterComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    if (localStorage.getItem('token')) {
+      this.router.navigate(['dashboard'])
+    }
     this.createForm();
   }
 
@@ -46,6 +51,7 @@ export class RegisterComponent implements OnInit {
       this.data = res;
       //console.log(res)
       if (this.data.status === 1) {
+        this.router.navigate(['login'])
         this.toastr.success(JSON.stringify(this.data.message), JSON.stringify(this.data.code), {
           timeOut: 2000,
           progressBar: true

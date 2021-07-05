@@ -29,6 +29,9 @@ export class LoginComponent implements OnInit {
     });
   }
   ngOnInit(): void {
+    if (localStorage.getItem('token')) {
+      this.router.navigate(['dashboard'])
+    }
     this.createForm();
   }
 
