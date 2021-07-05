@@ -6,17 +6,18 @@
 
     <nav class="nav-menu d-none d-lg-block">
       <ul *ngIf="auth; else show">
-        <li routerLinkActive="active">
-          <a [routerLink]="['/login']">Login</a>
-        </li>
-        <li routerLinkActive="active">
-          <a [routerLink]="['/register']">Register</a>
-        </li>
+        <li routerLinkActive="active"><a [routerLink]="['/dashboard']">Dashboard</a></li>
+        <li style="cursor: pointer;"><a (click)="logout()">Logout</a></li>
       </ul>
+
       <ng-template #show>
         <ul>
-          <li routerLinkActive="active"><a [routerLink]="['/dashboard']">Dashboard</a></li>
-          <li style="cursor: pointer;"><a (click)="logout()">Logout</a></li>
+          <li routerLinkActive="active">
+            <a [routerLink]="['/login']">Login</a>
+          </li>
+          <li routerLinkActive="active">
+            <a [routerLink]="['/register']">Register</a>
+          </li>
         </ul>
       </ng-template>
     </nav>

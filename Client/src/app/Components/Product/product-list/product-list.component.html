@@ -7,8 +7,8 @@
 
 <ng-template #show>
   <div class="no-results" *ngIf="products.data.length === 0 ; else showResults">
-    <p>No results. add new products by clicking on the button bellow.</p><button class="btn btn-dark mb-4"
-      [routerLink]="['/products/add']">Add New product</button>
+    <p>No results. add new products by clicking on the button bellow.</p>
+    <button class="btn btn-dark mb-4" [routerLink]="['/products/add']">Add New product</button>
 
   </div>
   <ng-template #showResults>

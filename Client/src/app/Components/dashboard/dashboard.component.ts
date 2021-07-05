@@ -16,6 +16,7 @@ export class DashboardComponent implements OnInit {
     this.token = localStorage.getItem('token');
     this.userData = jwt_decode(this.token);
     this.email = this.userData.email
+    console.log(this.userData)
   }
 
 }

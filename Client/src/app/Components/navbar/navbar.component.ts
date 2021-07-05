@@ -8,16 +8,18 @@ import { Router } from '@angular/router';
 })
 export class NavbarComponent implements OnInit {
   token: any;
-  auth = true;
+  auth = false;
   constructor(private router: Router) { }
 
   ngOnInit(): void {
-    if (localStorage.getItem('token')) { this.auth = false }
+    if (localStorage.getItem('token')) { this.auth = true }
   }
 
   logout() {
     localStorage.removeItem('token');
-    this.auth = true;
+    this.auth = false;
     this.router.navigate(['/login'])
   }
+
+
 }

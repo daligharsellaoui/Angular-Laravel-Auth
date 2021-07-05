@@ -6,7 +6,9 @@ import { environment } from 'src/environments/environment';
   providedIn: 'root'
 })
 export class AuthService {
-
+  payload: any;
+  auth: any;
+  token: any;
   constructor(private http: HttpClient) { }
 
   register(data) {
@@ -16,4 +18,6 @@ export class AuthService {
   login(data) {
     return this.http.post(environment.API_URL + '/api/login', data);
   }
+
 }
+
