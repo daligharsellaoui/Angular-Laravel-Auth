@@ -19,7 +19,7 @@
     <tbody>
       <tr *ngFor="let cat of categories">
         <th scope="row">{{cat.id}}</th>
-        <td><a [routerLink]="['/products']" [queryParams]="{category: cat.id}">{{cat.name}}</a></td>
+        <td><a [routerLink]="['/products']" [queryParams]="{category: cat.id,page:1}">{{cat.name}}</a></td>
         <td>{{cat.color}}</td>
         <td>
           <span class="material-icons-outlined">{{cat.icon}}</span>

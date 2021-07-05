@@ -26,7 +26,8 @@
         <tr *ngFor="let p of products.data">
           <th scope="row">{{p.id}}</th>
           <td><a routerLink='/products/{{p.id}}'>{{p.name}}</a></td>
-          <td><a (click)="reload()" [routerLink]="['/products']" [queryParams]="{category: p.cat_id}">{{p.cat_id}}</a>
+          <td><a (click)="reload()" [routerLink]="['/products']"
+              [queryParams]="{category: p.cat_id,page:1}">{{p.cat_id}}</a>
           </td>
           <td>{{p.price}}</td>
           <td>
