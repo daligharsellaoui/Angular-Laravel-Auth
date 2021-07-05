@@ -50,18 +50,28 @@ class CategoryController extends Controller
         public function updateCategory(Request $request, $id) {
             $category = Category::find($id);
             if(is_null($category)) {
-                return response()->json(['message' => 'Category Not Found'], 404);
+                $response['status'] = 0;
+                $response['message'] = 'Category not Found';
+                $response['code'] =404;
+            return response()->json($response);
             }
             $category->update($request->all());
-            return response($category, 200);
+                $response['status'] = 1;
+                $response['message'] = 'Category Updated Successfully';
+                $response['code'] =200;
+            return response()->json($response);
         }
         //Delete Category
         public function deleteCategory(Request $request, $id) {
             $category = Category::find($id);
             if(is_null($category)) {
-                return response()->json(['message' => 'Category Not Found'], 404);
+                $response['status'] = 0;
+                $response['message'] = 'Category Not Found';
+                $response['code'] =404;
+                return response()->json($response);
             }
             $category->delete();
+            $response['status'] = 1;
             $response['message'] = 'Category Deleted Successfully';
             $response['code'] =204;
             return response()->json($response);

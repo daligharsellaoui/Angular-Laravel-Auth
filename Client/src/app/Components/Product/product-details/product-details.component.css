@@ -1,0 +1,36 @@
+.card-top {
+  display: flex;
+  flex-direction: column;
+}
+.category {
+  display: flex;
+  flex-direction: row;
+}
+.product-image {
+  height: 400px;
+  border-radius: 20px;
+}
+.arrow {
+  font-size: 30px;
+  color: #eca008;
+}
+h1 {
+  margin: 10;
+  font-size: 50px;
+  font-weight: 700;
+  line-height: 64px;
+  color: #000;
+  font-family: "Poppins";
+  text-transform: uppercase;
+}
+
+h2 {
+  font-size: 20px;
+  font-weight: 700;
+  color: #000;
+  font-family: "Poppins";
+  text-transform: uppercase;
+}
+span {
+  font-size: 20px;
+}

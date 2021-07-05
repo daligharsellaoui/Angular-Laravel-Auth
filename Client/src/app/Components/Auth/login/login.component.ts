@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { AuthService } from '../../services/auth.service';
+import { AuthService } from '../../../services/Auth/auth.service';
 import { ToastrService } from 'ngx-toastr';
 
 import { Router } from '@angular/router'
@@ -46,7 +46,7 @@ export class LoginComponent implements OnInit {
       if (this.data.status === 1) {
         this.token = this.data.data.token;
         localStorage.setItem('token', this.token);
-        this.router.navigate(['/']);
+        this.router.navigate(['/dashboard']);
         this.toastr.success(JSON.stringify(this.data.message), JSON.stringify(this.data.code), {
           timeOut: 2000,
           progressBar: true

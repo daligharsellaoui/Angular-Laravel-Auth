@@ -1,0 +1,36 @@
+<h1 class="table-title">Category List</h1>
+<button class="btn btn-light mb-4" [routerLink]="['/categories/add']">Add New Category</button>
+
+<div class="spinner  offset-5" *ngIf="loading; else show">
+  <img src="assets/spinner.svg" alt="">
+</div>
+
+<ng-template #show>
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">ID</th>
+        <th scope="col">Name</th>
+        <th scope="col">Color</th>
+        <th scope="col">Icon</th>
+        <th scope="col">Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let cat of categories">
+        <th scope="row">{{cat.id}}</th>
+        <td><a [routerLink]="['/products']" [queryParams]="{category: cat.id}">{{cat.name}}</a></td>
+        <td>{{cat.color}}</td>
+        <td>
+          <span class="material-icons-outlined">{{cat.icon}}</span>
+        </td>
+        <td>
+          <div class="action-btn">
+            <span class="material-icons-outlined" routerLink=' /categories/edit/{{cat.id}}'>edit</span>
+            <span class="material-icons-outlined" (click)="delete(cat.id)">delete</span>
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</ng-template>

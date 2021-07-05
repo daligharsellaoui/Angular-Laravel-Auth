@@ -12,16 +12,11 @@ class ProductController extends Controller
 {
             //Product List
             public function getProducts() {
-                return response()->json(DB::table('products')->paginate(10), 200);
-            }
-            //Product List
-            //TODO
-            public function getProductsByCategory($id) {
-                $category = Category::find($id);
-                if(is_null($category)) {
-                    return response()->json(['message' => 'Category Not Found'], 404);
+                $id=request('category');
+                if($id) {
+                    return response()->json(DB::table('products')->where('cat_id',$id)->paginate(10), 200);
                 }
-                return response()->json(Product::where('cat_id',$id)->get(), 200);
+                else {return response()->json(DB::table('products')->paginate(10), 200);}
             }
             //Product Details
             public function getProductById($id) {
@@ -66,10 +61,16 @@ class ProductController extends Controller
             public function updateProduct(Request $request, $id) {
                 $product = Product::find($id);
                 if(is_null($product)) {
-                    return response()->json(['message' => 'Product Not Found'], 404);
+                    $response['status'] = 0;
+                    $response['message'] = 'Product not Found';
+                    $response['code'] =404;
+                return response()->json($response);
                 }
                 $product->update($request->all());
-                return response($product, 200);
+                    $response['status'] = 1;
+                    $response['message'] = 'Product Updated Successfully';
+                    $response['code'] =200;
+                return response()->json($response);
             }
             //Delete Product
             public function deleteProduct(Request $request, $id) {

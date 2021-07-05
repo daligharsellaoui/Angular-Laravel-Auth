@@ -1,0 +1,49 @@
+<h1 class="table-title">Product List</h1>
+<button class="btn btn-light mb-4" [routerLink]="['/products/add']">Add New product</button>
+
+<div class="spinner  offset-5" *ngIf="loading; else show">
+  <img src="assets/spinner.svg" alt="">
+</div>
+
+<ng-template #show>
+  <div class="no-results" *ngIf="products.data.length === 0 ; else showResults">
+    <p>No results. add new products by clicking on the button bellow.</p><button class="btn btn-dark mb-4"
+      [routerLink]="['/products/add']">Add New product</button>
+
+  </div>
+  <ng-template #showResults>
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">ID</th>
+          <th scope="col">Name</th>
+          <th scope="col">Category ID</th>
+          <th scope="col">Price</th>
+          <th scope="col">Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let p of products.data">
+          <th scope="row">{{p.id}}</th>
+          <td><a routerLink='/products/{{p.id}}'>{{p.name}}</a></td>
+          <td><a (click)="reload()" [routerLink]="['/products']" [queryParams]="{category: p.cat_id}">{{p.cat_id}}</a>
+          </td>
+          <td>{{p.price}}</td>
+          <td>
+            <div class="action-btn">
+              <span class="material-icons-outlined" routerLink='/products/edit/{{p.id}}'>edit</span>
+              <span class="material-icons-outlined" (click)="delete(p.id)">delete</span>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="pagination">
+      <p>Showing {{products.from}} to {{products.to}} items of {{products.total}} products</p>
+      <div *ngFor="let p of pages;let indexOfelement=index;">
+        <a [routerLink]="['/products']" [queryParams]="{page: indexOfelement+1}" (click)="reload()"
+          routerLinkActive="active">{{indexOfelement+1}}</a>
+      </div>
+    </div>
+  </ng-template>
+</ng-template>

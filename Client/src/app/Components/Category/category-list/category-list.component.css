@@ -1,0 +1,66 @@
+.table-title {
+  font-family: "poppins";
+  font-size: 40px;
+  font-weight: 600;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+  color: #000;
+}
+.table {
+  font-family: "poppins";
+  font-weight: 300;
+}
+th {
+  font-weight: 500;
+}
+.table thead {
+  background-color: #000;
+  color: #fff;
+  text-transform: uppercase;
+}
+.table tbody {
+  background-color: #fff;
+}
+.btn {
+  font-family: "poppins";
+  border-radius: 20px;
+}
+.action-btn {
+  display: flex;
+  flex-direction: row;
+}
+.action-btn .material-icons-outlined {
+  color: #000;
+  cursor: pointer;
+}
+.action-btn .material-icons-outlined:hover {
+  color: #eca008;
+}
+.btn-light:hover {
+  background-color: #d18f09;
+  border-color: #d18f09;
+  color: #fff;
+}
+td {
+  text-transform: capitalize;
+}
+td > span {
+  color: #d18f09;
+}
+@media (max-width: 392px) {
+  .table-title {
+    font-size: 25px;
+  }
+  th {
+    font-size: 8px;
+  }
+  td {
+    font-size: 10px;
+  }
+  .material-icons-outlined {
+    font-size: 15px;
+  }
+  .btn {
+    font-size: 10px;
+  }
+}
