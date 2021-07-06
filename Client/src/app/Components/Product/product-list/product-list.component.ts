@@ -30,7 +30,6 @@ export class ProductListComponent implements OnInit {
   getProducts(cat, page) {
     this.productService.productList(cat, page).subscribe(res => {
       this.products = res;
-      console.log(this.products)
       this.loading = false;
       this.pages = new Array(this.products.last_page);
     });

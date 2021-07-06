@@ -22,7 +22,6 @@ export class AddProductComponent implements OnInit {
 
   ngOnInit(): void {
     this.getCategories();
-    console.log(this.product);
   }
   getCategories() {
     this.categoryService.categoryList().subscribe(res => {
@@ -31,12 +30,9 @@ export class AddProductComponent implements OnInit {
     });
   }
   submit() {
-    console.log(this.product)
-    /*
     this.productService.addProduct(this.product).subscribe(res => {
 
       this.data = res;
-
 
       if (this.data.status === 1) {
         this.router.navigate(['/products']);
@@ -50,7 +46,7 @@ export class AddProductComponent implements OnInit {
           progressBar: true
         });
       }
-    })*/
+    })
   }
 
 }

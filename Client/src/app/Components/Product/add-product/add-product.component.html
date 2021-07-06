@@ -16,9 +16,8 @@
         </div>
 
         <div class="mt-3 form-group">
-          <label for="name" class="label mt-3">Category</label>
-          <select [(ngModel)]="product.cat_id" class="mt-2 form-control">
-            <option [ngValue]="null">Select Category</option>
+          <label for="category" class="label mt-3">Category</label>
+          <select [(ngModel)]="product.cat_id" class="mt-2 form-control" name="category">
             <option *ngFor="let cat of categories" [ngValue]="cat.id">{{cat.name}}</option>
           </select>
         </div>
